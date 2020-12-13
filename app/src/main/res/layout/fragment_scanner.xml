@@ -3,4 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScannerFragment"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ScannerFragment">
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scanner_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:autoFocusButtonColor="@color/whoosh_yellow"
+        app:autoFocusButtonVisible="true"
+        app:flashButtonColor="@color/whoosh_yellow"
+        app:flashButtonVisible="true"
+        app:frameColor="@color/whoosh_yellow"
+        app:frameCornersSize="50dp"
+        app:frameCornersRadius="10dp"
+        app:frameAspectRatioWidth="1"
+        app:frameAspectRatioHeight="1"
+        app:frameSize="0.75"
+        app:frameThickness="4dp"
+        app:maskColor="#77000000"/>
+
+</FrameLayout>
