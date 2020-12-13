@@ -7,7 +7,19 @@
 
     <fragment
         android:id="@+id/scannerFragment"
-        android:name="com.temsi.whooshtest.ScannerFragment"
+        android:name="com.temsi.whooshtest.screens.scanner.ScannerFragment"
         android:label="fragment_scanner"
-        tools:layout="@layout/fragment_scanner" />
+        tools:layout="@layout/fragment_scanner" >
+        <action
+            android:id="@+id/action_scannerFragment_to_scooterInfoFragment"
+            app:destination="@id/scooterInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scooterInfoFragment"
+        android:name="com.temsi.whooshtest.screens.scooterinfo.ScooterInfoFragment"
+        android:label="ScooterInfoFragment" >
+        <argument
+            android:name="ScooterName"
+            app:argType="string" />
+    </fragment>
 </navigation>
