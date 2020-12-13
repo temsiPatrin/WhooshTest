@@ -12,10 +12,12 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.temsi.whooshtest.R
+import com.temsi.whooshtest.utils.NameFromUrl
 
 
 class ScannerFragment : Fragment() {
@@ -39,7 +41,11 @@ class ScannerFragment : Fragment() {
             codeScanner = CodeScanner(activity, scannerView)
             codeScanner.decodeCallback = DecodeCallback {
                 activity.runOnUiThread {
-                    Toast.makeText(activity, it.text, Toast.LENGTH_LONG).show()
+                    findNavController()
+                        .navigate(ScannerFragmentDirections
+                            .actionScannerFragmentToScooterInfoFragment(
+                                NameFromUrl.getNameScooter(it.text)
+                            ))
                 }
             }
             scannerView.setOnClickListener { codeScanner.startPreview() }
@@ -68,7 +74,7 @@ class ScannerFragment : Fragment() {
         grantResults: IntArray
     ) {
         if (requestCode != PERMISSION_REQUEST_CODE || !grantResults.isNotEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-            showMessageOKCancel("You need to allow access permissions",
+            showMessageOKCancel(getString(R.string.need_to_allow_access_permissions),
                 DialogInterface.OnClickListener { _, _ -> requestPermission() }
             )
         }

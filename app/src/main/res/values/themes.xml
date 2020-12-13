@@ -3,10 +3,10 @@
     <style name="Theme.WhooshTest" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/whoosh_yellow</item>
-        <item name="colorPrimaryVariant">@color/whoosh_red</item>
+        <item name="colorPrimaryVariant">@color/whoosh_yellow</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/whoosh_yellow</item>
+        <item name="colorSecondary">@color/whoosh_red</item>
         <item name="colorSecondaryVariant">@color/whoosh_red</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->

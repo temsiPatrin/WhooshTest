@@ -34,6 +34,7 @@ class ScooterInfoViewModel(val name : String,private val repo: ScooterInfoRepo) 
                 .subscribe({
                     _scooterInfo.postValue(it)
                 }, {
+                    _scooterInfo.postValue(ScooterInfoModel(name,"Подключите интернет",""))
                 })
         )
     }

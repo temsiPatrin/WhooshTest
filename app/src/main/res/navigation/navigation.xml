@@ -19,7 +19,7 @@
         android:name="com.temsi.whooshtest.screens.scooterinfo.ScooterInfoFragment"
         android:label="ScooterInfoFragment" >
         <argument
-            android:name="ScooterName"
+            android:name="scooterName"
             app:argType="string" />
     </fragment>
 </navigation>
