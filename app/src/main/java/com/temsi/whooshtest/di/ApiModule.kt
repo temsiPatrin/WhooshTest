@@ -21,7 +21,7 @@ val apiModule = module {
             .build()
 
     fun provideRetrofit(client: OkHttpClient): ScooterApi = Retrofit.Builder()
-        .baseUrl("http://89.22.54.72/")
+        .baseUrl("https://api.whoosh.bike/")
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
