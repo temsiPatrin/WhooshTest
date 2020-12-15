@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/scannerFragment"
         android:name="com.temsi.whooshtest.screens.scanner.ScannerFragment"
-        android:label="fragment_scanner"
+        android:label="Scanner"
         tools:layout="@layout/fragment_scanner" >
         <action
             android:id="@+id/action_scannerFragment_to_scooterInfoFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/scooterInfoFragment"
         android:name="com.temsi.whooshtest.screens.scooterinfo.ScooterInfoFragment"
-        android:label="ScooterInfoFragment" >
+        android:label="ScooterInfo" >
         <argument
             android:name="scooterName"
             app:argType="string" />

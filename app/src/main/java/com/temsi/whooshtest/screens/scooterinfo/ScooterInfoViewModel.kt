@@ -1,18 +1,20 @@
 package com.temsi.whooshtest.screens.scooterinfo
 
-import android.util.Log
-import androidx.databinding.Observable
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.temsi.whooshtest.entities.ScooterInfoModel
 import com.temsi.whooshtest.repo.ScooterInfoRepo
+import com.temsi.whooshtest.utils.ResourcesHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ScooterInfoViewModel(val name : String,private val repo: ScooterInfoRepo) : ViewModel() {
+class ScooterInfoViewModel(
+    private val resourcesHelper: ResourcesHelper,
+    private val repo: ScooterInfoRepo
+) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -21,20 +23,21 @@ class ScooterInfoViewModel(val name : String,private val repo: ScooterInfoRepo) 
         get() = _scooterInfo
 
     init {
-        _scooterInfo.value = ScooterInfoModel(name,"Подождите...","Подождите...")
-        fetchScooterInfo(name)
+        _scooterInfo.value = ScooterInfoModel(resourcesHelper.baseScooterName,
+            resourcesHelper.wait, resourcesHelper.wait)
     }
 
-    private fun fetchScooterInfo(name: String) {
+    fun fetchScooterInfo(name: String) {
         compositeDisposable.add(
             repo.getScooterInfo(name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map { ScooterInfoModel(name,it.status,it.comments) }
+                .map { ScooterInfoModel(name, it.status, it.comments) }
                 .subscribe({
                     _scooterInfo.postValue(it)
                 }, {
-                    _scooterInfo.postValue(ScooterInfoModel(name,"Подключите интернет",""))
+                    _scooterInfo.postValue(ScooterInfoModel(resourcesHelper.baseScooterName,
+                        resourcesHelper.connectToInternet, resourcesHelper.connectToInternet))
                 })
         )
     }

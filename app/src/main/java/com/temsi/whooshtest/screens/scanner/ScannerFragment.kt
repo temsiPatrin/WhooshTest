@@ -42,10 +42,12 @@ class ScannerFragment : Fragment() {
             codeScanner.decodeCallback = DecodeCallback {
                 activity.runOnUiThread {
                     findNavController()
-                        .navigate(ScannerFragmentDirections
-                            .actionScannerFragmentToScooterInfoFragment(
-                                NameFromUrl.getNameScooter(it.text)
-                            ))
+                        .navigate(
+                            ScannerFragmentDirections
+                                .actionScannerFragmentToScooterInfoFragment(
+                                    NameFromUrl.getNameScooter(it.text)
+                                )
+                        )
                 }
             }
             scannerView.setOnClickListener { codeScanner.startPreview() }
@@ -86,19 +88,19 @@ class ScannerFragment : Fragment() {
     ) {
         AlertDialog.Builder(requireContext())
             .setMessage(message)
-            .setPositiveButton("OK", okListener)
-            .setNegativeButton("Cancel", null)
+            .setPositiveButton(getString(R.string.ok), okListener)
+            .setNegativeButton(getString(R.string.cancel), null)
             .create()
             .show()
     }
 
     override fun onResume() {
+        if (::codeScanner.isInitialized) codeScanner.startPreview()
         super.onResume()
-        codeScanner.startPreview()
     }
 
     override fun onPause() {
-        codeScanner.releaseResources()
+        if (::codeScanner.isInitialized) codeScanner.releaseResources()
         super.onPause()
     }
 

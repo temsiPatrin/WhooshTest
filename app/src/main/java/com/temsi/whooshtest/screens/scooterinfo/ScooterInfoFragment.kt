@@ -14,9 +14,7 @@ import org.koin.core.parameter.parametersOf
 
 class ScooterInfoFragment : Fragment() {
 
-    private val viewModel by viewModel<ScooterInfoViewModel>{ parametersOf(
-        ScooterInfoFragmentArgs.fromBundle(requireArguments()).scooterName
-    )}
+    private val viewModel by viewModel<ScooterInfoViewModel>()
 
 
     override fun onCreateView(
@@ -26,6 +24,8 @@ class ScooterInfoFragment : Fragment() {
         val binding : FragmentScooterInfoBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_scooter_info, container, false
         )
+        val scooterName = ScooterInfoFragmentArgs.fromBundle(requireArguments()).scooterName
+        viewModel.fetchScooterInfo(scooterName)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         return binding.root
