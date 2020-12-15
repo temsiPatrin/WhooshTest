@@ -88,8 +88,8 @@ class ScannerFragment : Fragment() {
     ) {
         AlertDialog.Builder(requireContext())
             .setMessage(message)
-            .setPositiveButton("OK", okListener)
-            .setNegativeButton("Cancel", null)
+            .setPositiveButton(getString(R.string.ok), okListener)
+            .setNegativeButton(getString(R.string.cancel), null)
             .create()
             .show()
     }

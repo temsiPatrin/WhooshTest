@@ -6,4 +6,9 @@
     <string name="commentary">Комментарий:</string>
     <string name="image">image</string>
     <string name="need_to_allow_access_permissions">Вам необходимо разрешить доступ</string>
+    <string name="wait">Подождите...</string>
+    <string name="connectToInternet">Подключите интернет</string>
+    <string name="baseScooterName">NNNN</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>
