@@ -4,4 +4,3 @@ Test task for Whoosh
 использовал следушие библиотеки Koin,RxJava2,Retrofit,
 для сканирования QR codeScanner (построенный на ZXING) https://github.com/yuriy-budiyev/code-scanner
 
-Сделано с любовью, для Whoosh!))))
